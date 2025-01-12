@@ -42,14 +42,14 @@ def ai_model(payload: AIModelInput):
                         personality description or backstory of the character. Based on the inputs, you identify appropriate action, preferably from 
                         the action list, the entity, and a response. You output in JSON with an array of actions, entities, and a natural language 
                         response. The response output should be precise and a short sentence, and output a JSON only. This is an example response: "{
-                        "AI Response": {
+                        "{
                             "actions": [
                             "Shoot"
                             ],
                             "entities": [
                             "Enemy 1"
                             ],
-                            "Verbal Response": "Target acquired, firing!"
+                            "Verbal_Response": "Target acquired, firing!"
                           }
                         }"
                     """
@@ -70,6 +70,6 @@ def ai_model(payload: AIModelInput):
 
         # Parse the valid JSON
         output = json.loads(cleaned_json)
-        return {"response": output}
+        return {"AI_Response": output}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
